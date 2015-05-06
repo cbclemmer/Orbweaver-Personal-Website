@@ -1,0 +1,26 @@
+<h1 id="blogHeader"><a href="http://orbweaver12.tumblr.com">Blog</a></h1>
+<script>
+    //Tumblr stuff
+	var tumblrPost;
+	for(var i = 0 ; i< tumblr_api_read.posts.length;i++){
+		if(tumblr_api_read.posts[i].type == "link"){
+			tumblrPost = 
+			"<article class='tumblr'>"
+			+"<a href='"+tumblr_api_read.posts[i]['link-url']+"' target='_blank'>"
+			+"<h1>"+tumblr_api_read.posts[i]["link-text"]+"</h1>"
+			+"</a>"
+			+"<timestamp>"+moment(tumblr_api_read.posts[i].date).format('LL')+"</timestamp><br>"
+			+tumblr_api_read.posts[i]['link-description']
+			+"</article>";
+		}
+		if(tumblr_api_read.posts[i].type == "regular"){
+			tumblrPost = 
+			"<article class='tumblr'>"
+			+"<h1>"+tumblr_api_read.posts[i]["regular-title"]+"</h1>"
+			+"<timestamp>"+moment(tumblr_api_read.posts[i].date).format('LL')+"</timestamp><br>"
+			+tumblr_api_read.posts[i]['regular-body']
+			+"</article>";
+		}
+		$(".info").append(tumblrPost);
+	}
+</script>
