@@ -1,5 +1,5 @@
 ##Orbweaver  
-This the code for my website at ![Orbweaver Developments](www.orbweaverdev.com)  
+This the code for my website at ![Orbweaver Developments](http://www.orbweaverdev.com)  
 
 The site uses nGinx to serve the main page and assets and node to serve ajax requests.  
 * copy the contents of the `toNginx` folder in `/var/www/orbweaver` except for `orbweaver_nGinx`
