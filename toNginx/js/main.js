@@ -2,6 +2,16 @@ var p=false;
 var n=false;
 var info = "";
 var hover = "";
+
+function heartbeat(){
+	$.get("http://www.orbweaverdev.com:81/h/eartbeat", function(data){
+		if(!data)
+			console.log("Something went wrong");
+		setTimeout(heartbeat, 5000);
+	});
+}
+heartbeat();
+
 $(document).ready(function(){
 	var hash = window.location.hash;
 	if(window.location.hash!=""){
