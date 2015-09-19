@@ -14,7 +14,7 @@ String.prototype.toHHMMSS = function () {
 function toPrettyDate(time){
     var date = "";
     var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    date = monthNames[time.getMonth()]+" "+ time.getDay()+", "+time.getFullYear()+" @ ";
+    date = monthNames[time.getMonth()]+" "+ time.getDate()+", "+time.getFullYear()+" @ ";
     if(time.getHours()<13){
         date = date + time.getHours() + ":" + time.getMinutes() + " AM";
     }else{
@@ -31,6 +31,7 @@ var express = require("express"),
 //express settings
 app.set('views', __dirname + '/sites');
 app.engine('html', require('ejs').renderFile);
+app.engine('txt', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 
 app.use(function(req, res, next) {
