@@ -2,9 +2,12 @@ var p=false;
 var n=false;
 var info = "";
 var hover = "";
+var address = "http://www.orbweaverdev.com";
+var port = "81";
+
 
 function heartbeat(){
-	$.get("http://www.orbweaverdev.com:81/h/eartbeat", function(data){
+	$.get(address+port+"/h/eartbeat", function(data){
 		if(!data)
 			console.log("Something went wrong");
 		setTimeout(heartbeat, 5000);
@@ -26,7 +29,7 @@ $(document).ready(function(){
 	}
 	if(hash=="about")
 		$("#blog").show();
-	$.get("http://www.orbweaverdev.com:81/"+hash, function(data){
+	$.get(address+port+"/"+hash, function(data){
 			$(".info").append(data);
 			$(".info").fadeIn('fast');
 		});
@@ -46,7 +49,7 @@ $(document).ready(function(){
 	});
 	$('.home').click(function(){
 		window.location.hash = "about";
-		$.get("http://www.orbweaverdev.com:81/about", function(data){
+		$.get(address+port+"/about", function(data){
 			$(".info").hide();
 			$(".info").empty();
 			$(".info").append(data);
@@ -56,7 +59,7 @@ $(document).ready(function(){
 	$('.contact').click(function(e){
 		e.preventDefault();
 		window.location.hash = "contact";
-		$.get("http://www.orbweaverdev.com:81/contact", function(data){
+		$.get(address+port+"/contact", function(data){
 			$(".info").hide();
 			$(".info").empty();
 			$(".info").append(data);
@@ -67,7 +70,7 @@ $(document).ready(function(){
 	$('.blog').click(function(e){
 		e.preventDefault();
 		window.location.hash = "blog";
-		$.get("http://www.orbweaverdev.com:81/blog", function(data){
+		$.get(address+port+"/blog", function(data){
 			$(".info").hide();
 			$(".info").empty();
 			$(".info").append(data);
@@ -80,7 +83,7 @@ $(document).ready(function(){
 		if(window.innerWidth<=1200){
 			hover = $(this).attr('id');
 			hover = hover.toLowerCase();
-			$.get(("http://www.orbweaverdev.com:81/"+hover), function(data){
+			$.get((address+port+"/"+hover), function(data){
 				info = data;
 				$(".info").hide();
 				$(".info").empty();
@@ -98,7 +101,7 @@ $(document).ready(function(){
 		$(this).animate({opacity: '1'});
 		hover = $(this).attr('id');
 		hover = hover.toLowerCase();
-		$.get(("http://www.orbweaverdev.com:81/"+hover), function(data){
+		$.get((address+port+"/"+hover), function(data){
 			info = data;
 		});
 	});
@@ -108,12 +111,12 @@ $(document).ready(function(){
 	$("#menu").click(function(){
 		$("#nav").toggle('fast');
 	});
-	$("#nav span").click(function(){
+	$("#nav").find("span").click(function(){
 		if(window.innerWidth <=1200){
 			$("#nav").slideUp();
 		}
 	});
-	$("#boiler-info a").click(function(){
+	$("#boiler-info").find("a").click(function(){
 		window.location.replace("http://www.orbweaverdev.com:8080")
 	});
 	$("#message-info").click(function(){
