@@ -2,7 +2,7 @@ var p=false;
 var n=false;
 var info = "";
 var hover = "";
-var address = "http://www.orbweaverdev.com";
+var address = window.location.origin;
 var port = "81";
 
 
